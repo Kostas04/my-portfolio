@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kostas Portfolio</title>
-    <link rel="icon" href="Logo2.png" > 
+    <link rel="icon" href="Logo.png" > 
     <style>
         :root {
-            /* Light Mode Χρώματα */
             --bg-color: #f4f7f6;
             --text-color: #333;
             --card-bg: #ffffff;
             --navbar-bg: rgba(255, 255, 255, 0.8);
-            --accent-color: #207288; /* Το τιρκουάζ σου */
+            --accent-color: #207288;
             --hero-bg: linear-gradient(135deg, #207288, #3498db);
         }
 
         [data-theme="dark"] {
-            /* Dark Mode Χρώματα */
             --bg-color: #121212;
             --text-color: #e0e0e0;
             --card-bg: #1e1e1e;
@@ -26,16 +24,19 @@
             --hero-bg: linear-gradient(135deg, #0f0f0f, #1e1e1e);
         }
 
+        /* SMOOTH SCROLL */
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            scroll-behavior: smooth;
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* NAVBAR ΣΤΥΛ */
         .navbar {
             position: fixed;
             top: 0;
@@ -68,7 +69,7 @@
         .nav-logo span { color: #db348d; }
 
         .nav-menu {
-            list-style: none; /* Εξαφανίζει τις κουκκίδες */
+            list-style: none;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -83,9 +84,7 @@
             transition: 0.3s;
         }
 
-        .nav-menu a:hover {
-            color: var(--accent-color);
-        }
+        .nav-menu a:hover { color: var(--accent-color); }
 
         .nav-btn {
             background: var(--accent-color);
@@ -103,9 +102,6 @@
             transition: transform 0.2s;
         }
 
-        .theme-btn:hover { transform: scale(1.1); }
-
-        /* HERO SECTION */
         .hero {
             height: 100vh;
             display: flex;
@@ -120,47 +116,15 @@
         .hero h1 { font-size: 4rem; margin: 0; }
         .hero p { font-size: 1.5rem; opacity: 0.9; }
 
-        /* ABOUT SECTION */
-        .about-section {
-            padding: 100px 20px;
-            background-color: var(--card-bg);
-        }
+        .about-section { padding: 100px 20px; background-color: var(--card-bg); }
+        .about-container { max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-content p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
+        .about-content strong { color: var(--accent-color); }
 
-        .about-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
+        .projects-section { padding: 100px 20px; background-color: var(--bg-color); }
+        .section-title { text-align: center; margin-bottom: 50px; font-size: 2.5rem; color: var(--accent-color); }
 
-        .about-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        /* ΤΙΡΚΟΥΑΖ ΧΡΩΜΑ ΣΤΑ ENTONA ΓΡΑΜΜΑΤΑ */
-        .about-content strong {
-            color: var(--accent-color);
-        }
-
-        /* PROJECTS SECTION */
-        .projects-section {
-            padding: 100px 20px;
-            background-color: var(--bg-color);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: var(--accent-color);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
         .card {
             background-color: var(--card-bg);
@@ -176,33 +140,30 @@
         .card:hover { transform: translateY(-10px); }
         .card-image { height: 150px; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
 
-        footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 60px 20px 20px;
-            text-align: center;
-        }
+        footer { background-color: #1a1a1a; color: white; padding: 60px 20px 20px; text-align: center; }
+        .email-link { color: #3498db; font-size: 1.2rem; text-decoration: none; font-weight: bold; }
 
-        .email-link {
-            color: #3498db;
-            font-size: 1.2rem;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* LANGUAGE HANDLING */
         .lang-en { display: none; }
+
+        /* Ρυθμίσεις για κινητά */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 10px; }
+            .nav-menu { gap: 10px; font-size: 0.85rem; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; padding: 0 20px; }
+            .navbar { height: auto; padding: 10px 0; }
+        }
     </style>
 </head>
-<body>
+<body id="home">
     
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">KI<span>.</span></a>
+            <a href="#home" class="nav-logo">KI<span>.</span></a>
             <ul class="nav-menu">
                 <li>
-                    <a href="#" class="lang-el">Αρχική</a>
-                    <a href="#" class="lang-en">Home</a>
+                    <a href="#home" class="lang-el">Αρχική</a>
+                    <a href="#home" class="lang-en">Home</a>
                 </li>
                 <li>
                     <a href="#about" class="lang-el">Σχετικά με εμένα</a>
@@ -284,7 +245,7 @@
             <p class="lang-el">Στείλτε μου email εδώ:</p>
             <p class="lang-en">Send me an email here:</p>
             <a href="mailto:kostasioannou04@gmail.com" class="email-link">kostasioannou04@gmail.com</a>
-            <div class="footer-bottom">
+            <div class="footer-bottom" style="margin-top: 20px; opacity: 0.7;">
                 <p>&copy; 2025 Konstantinos Ioannou. All Rights Reserved.</p>
             </div>
         </div>
